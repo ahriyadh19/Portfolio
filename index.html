@@ -18,52 +18,34 @@
 <body>
     <div class="glass-box">
         <h1>AHMED RIYADH MOHAMMED AHMED</h1>
-        <h3>Web & Mobile Developer</h3>
-        <div class="programming-icons">
-        </div>
+        <h4>Web & Mobile Developer</h4>
     </div>
     <div class="container">
         <div class="wrap">
-            <!-- Generate random values for --i and apply them to the spans -->
-            <script>
-                // Get the screen width and height
-                var screenWidth = window.innerWidth;
-                var screenHeight = window.innerHeight;
-
-                // Calculate the number of spans based on screen width divided by 25
-                var numberOfSpans = Math.floor(screenWidth / 40);
-
-                // Generate spans with random --i values and animation properties
-                for (let i = 1; i <= numberOfSpans; i++) {
-                    var randomValue = Math.floor(Math.random() * 10) + 1;
-                    var span = document.createElement('span');
-                    span.style.setProperty('--i', randomValue);
-                    span.style.setProperty('--delay', Math.random() * 5 + 1 + 's'); // Random delay
-                    span.style.setProperty('--duration', Math.random() * 10 + 5 + 's'); // Random duration
-                    span.style.setProperty('--translateX', (Math.random() * screenWidth * 2 - screenWidth) + 'px'); // Random translateX with negative and positive values
-                    span.style.setProperty('--translateY', (Math.random() * screenHeight * 2 - screenHeight) + 'px'); // Random translateY with negative and positive values
-                    span.style.setProperty('--scale', Math.random() * 2); // Random scale
-                    document.querySelector('.wrap').appendChild(span);
-                }
-
-
-            </script>
+            <script src="script.js"></script>
         </div>
     </div>
 
     <footer>
         <div class="social-icons">
-            <a href="mailto: ahriyadh19@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></a>
-            <a href="https://www.linkedin.com/in/ahriyadh19/" target="_blank"><i
+            <a href="mailto:ahriyadh19@gmail.com" target="_blank" rel="noopener"><i
+                    class="fa-solid fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/ahriyadh19/" target="_blank" rel="noopener"><i
                     class="fa-brands fa-linkedin-in"></i></a>
-            <a href="https://www.facebook.com/ahriyadh19" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/ahriyadh19" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://github.com/ahriyadh19" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://twitter.com/ahriyadh19" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="https://wakatime.com/@ahriyadh19" target="_blank"><i class="fa-regular fa-clock"></i></a>
-            <a href="https://wa.me/message/POCA2ZY4IN4BN1" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://t.me/ahriyadh19" target="_blank"><i class="fa-brands fa-telegram"></i></a>
-            <a href="https://m.me/ahriyadh19" target="_blank"><i class="fa-brands fa-facebook-messenger"></i></a>
+            <a href="https://www.facebook.com/ahriyadh19" target="_blank" rel="noopener"><i
+                    class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/ahriyadh19" target="_blank" rel="noopener"><i
+                    class="fab fa-instagram"></i></a>
+            <a href="https://github.com/ahriyadh19" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+            <a href="https://twitter.com/ahriyadh19" target="_blank" rel="noopener"><i
+                    class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://wakatime.com/@ahriyadh19" target="_blank" rel="noopener"><i
+                    class="fa-regular fa-clock"></i></a>
+            <a href="https://wa.me/message/POCA2ZY4IN4BN1" target="_blank" rel="noopener"><i
+                    class="fab fa-whatsapp"></i></a>
+            <a href="https://t.me/ahriyadh19" target="_blank" rel="noopener"><i class="fa-brands fa-telegram"></i></a>
+            <a href="https://m.me/ahriyadh19" target="_blank" rel="noopener"><i
+                    class="fa-brands fa-facebook-messenger"></i></a>
         </div>
     </footer>
 </body>

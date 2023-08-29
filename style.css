@@ -45,16 +45,16 @@ body {
 footer {
   position: fixed;
   bottom: 0;
-  width: 100%; 
+  width: 100%;
   color: #fff;
   text-align: center;
   padding: 10px 0;
-  backdrop-filter: blur(5px); 
-  z-index: 1; 
+  backdrop-filter: blur(5px);
+  z-index: 1;
 }
 
 .social-icons a {
-  font-size: 24px;
+  font-size: 15px;
   color: #fff;
   margin: 0 10px;
   text-decoration: none;
@@ -66,35 +66,31 @@ footer {
 
 .glass-box {
   border-radius: 10px;
-  width: 500; 
+  width: 500;
   height: 100px;
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(
-    -50%,
-    -50%
-  ); 
+  transform: translate(-50%, -50%);
   color: #fff;
   text-align: center;
   padding: 20px;
-  backdrop-filter: blur(5px); 
-  z-index: 1; 
+  backdrop-filter: blur(5px);
+  z-index: 1;
 }
 .programming-icons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 20px;
-    
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
 }
 
 .programming-icons i {
-    font-size: 36px;
-    color: #fffffff3; /* Adjust the color as needed */
-    transition: color 0.3s ease-in-out;
+  font-size: 36px;
+  color: #fffffff3; /* Adjust the color as needed */
+  transition: color 0.3s ease-in-out;
 }
 
 .programming-icons i:hover {
-    color: #ff5722; /* Change the hover color as desired */
+  color: #ff5722; /* Change the hover color as desired */
 }
