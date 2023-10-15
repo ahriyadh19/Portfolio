@@ -102,14 +102,15 @@ footer {
 .download-button a {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #084a8d6a; /* Button background color */
-  color: #fff; /* Button text color */
+  background-color: #fff; 
+  color: #525151;
   text-decoration: none;
   border-radius: 5px;
   font-weight: bold;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.5s ease-in-out;
 }
 
 .download-button a:hover {
-  background-color: #02366e; /* Hover background color */
+  background-color: #525151;
+  color: #fff;
 }
