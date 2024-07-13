@@ -85,10 +85,15 @@ footer {
 
 .glass-box {
   border-radius: 10px;
-  width: 80%;
-  max-width: 500px;
-  padding: 20px;
+  width: 500;
+  height: 100px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
   text-align: center;
+  padding: 20px;
   backdrop-filter: blur(5px);
   z-index: 1;
 }
@@ -104,7 +109,7 @@ footer {
 .download-button a {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #fff;
+  background-color: #ffffff44;
   color: #525151;
   text-decoration: none;
   border-radius: 5px;
