@@ -9,7 +9,7 @@ const colors = [
 ];
 
 // Shapes array
-const shapes = ['circle'];
+const shapes = ['circle', 'square'];
 
 // Get the screen width and height
 const screenWidth = window.innerWidth;
