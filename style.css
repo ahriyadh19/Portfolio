@@ -6,7 +6,7 @@
 
 html,
 body {
-  height: 100%;
+  min-height: 100dvh;
   width: 100%;
   overflow: hidden;
   font-family: Arial, sans-serif;
@@ -40,10 +40,29 @@ body {
   position: absolute;
   width: 30px;
   height: 30px;
-  background: #4fc3dc;
+  background: var(--color);
+  box-shadow: 0 0 0 10px var(--color-alpha), 0 0 50px var(--color),
+    0 0 100px var(--color);
+  animation: animated var(--duration) linear infinite;
+  transform: scale(var(--scale)); /* Start with random scaling */
+}
+
+/* Add a shape class for circle */
+.circle {
   border-radius: 50%;
-  box-shadow: 0 0 0 10px #4fc3dc33, 0 0 50px #4fc3dc, 0 0 100px #4fc3dc;
-  animation: animated 15s linear infinite;
+}
+
+/* Add a shape class for square (no additional styling needed) */
+
+/* Triangle shape using clip-path */
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 30px solid var(--color);
+  background: none;
+  box-shadow: none;
 }
 
 @keyframes animated {
@@ -57,18 +76,12 @@ body {
   }
 }
 
-.wrap span:nth-child(even) {
-  background: #ff2d75;
-  box-shadow: 0 0 0 10px #ff2d7544, 0 0 50px #ff2d75, 0 0 100px #ff2d75;
-}
-
 footer {
   position: fixed;
   bottom: 0;
   width: 100%;
   text-align: center;
   padding: 10px 0;
-  backdrop-filter: blur(5px);
   z-index: 1;
 }
 
@@ -85,7 +98,7 @@ footer {
 
 .glass-box {
   border-radius: 10px;
-  width: 500;
+  width: 500px;
   height: 100px;
   position: fixed;
   top: 50%;
@@ -94,7 +107,6 @@ footer {
   color: #fff;
   text-align: center;
   padding: 20px;
-  backdrop-filter: blur(5px);
   z-index: 1;
 }
 
