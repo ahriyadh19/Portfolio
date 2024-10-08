@@ -31,48 +31,42 @@ body {
 
 .wrap {
   position: relative;
-  display: flex;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
 .wrap span {
   position: absolute;
+  display: inline-block;
   width: 30px;
   height: 30px;
-  background: var(--color);
-  box-shadow: 0 0 0 10px var(--color-alpha), 0 0 50px var(--color),
-    0 0 100px var(--color);
-  animation: animated var(--duration) linear infinite;
-  transform: scale(var(--scale)); /* Start with random scaling */
+  color: var(--color); /* Set icon color */
+  font-size: 30px; /* Icon size */
+  animation: animate var(--duration) linear infinite;
+  animation-delay: var(--delay);
+  transform: translate(var(--startX), var(--startY)) scale(var(--startScale));
 }
 
-/* Add a shape class for circle */
+.circle,
+.square {
+  background-color: var(--color);
+  box-shadow: 0 0 10px var(--color), 0 0 20px var(--color),
+    0 0 30px var(--color);
+}
+
 .circle {
   border-radius: 50%;
 }
 
-/* Add a shape class for square (no additional styling needed) */
-
-/* Triangle shape using clip-path */
-.triangle {
-  width: 0;
-  height: 0;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-bottom: 30px solid var(--color);
-  background: none;
-  box-shadow: none;
+.icon {
+  text-align: center;
 }
 
-@keyframes animated {
-  0% {
-    transform: translate(var(--translateX), var(--translateY))
-      scale(var(--scale));
-  }
-  100% {
-    transform: translate(var(--finalTranslateX), var(--finalTranslateY))
-      scale(var(--finalScale));
+@keyframes animate {
+  to {
+    transform: translate(var(--endX), var(--endY)) scale(var(--endScale));
+    opacity: 0;
   }
 }
 
