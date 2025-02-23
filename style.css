@@ -129,3 +129,68 @@ footer {
   background-color: #525151;
   color: #fff;
 }
+
+.glass-box {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.wrap span {
+  filter: drop-shadow(0 0 1px var(--color));
+}
+
+.icon i {
+  text-shadow: 0 0 1px var(--color);
+}
+
+.circle,
+.square {
+  box-shadow: 0 0 1px var(--color);
+}
+
+/* Add to existing CSS */
+.shape {
+  transition: all 0.3s ease;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.square {
+  border-radius: 3px;
+}
+
+/* Reduce aura effects */
+.icon i {
+  text-shadow: 0 0 6px var(--color);
+}
+
+.wrap span {
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+.wrap span:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+@keyframes animate {
+  0% {
+    transform: translate(var(--startX), var(--startY)) scale(var(--startScale));
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--endX), var(--endY)) scale(var(--endScale));
+    opacity: 0;
+  }
+}

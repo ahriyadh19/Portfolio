@@ -79,40 +79,63 @@ const icons = [
 // Shapes array
 const shapes = ['circle', 'square'];
 
-// Get the screen width and height
+// Get the screen dimensions
 const screenWidth = window.innerWidth;
 const screenHeight = window.innerHeight;
 
-// Calculate the number of spans based on screen width divided by 40
-const numberOfSpans = Math.floor(screenWidth / 50);
+// Create elements with random types (icon or shape)
+const numberOfElements = Math.floor(screenWidth / 12); // Balanced density
 
-// Generate spans with random properties
-for (let i = 1; i <= numberOfSpans; i++) {
-    const span = document.createElement('span');
+for (let i = 1; i <= numberOfElements; i++) {
+    const element = document.createElement('span');
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+
+    // Randomly choose between icon or shape
+    const isShape = Math.random() > 0.5; // 50% chance for shape
+    const shapeType = shapes[Math.floor(Math.random() * shapes.length)];
+
+    // Position and movement parameters
+    const angle = Math.random() * Math.PI * 2;
+    const distance = Math.max(screenWidth, screenHeight) * 1.5;
     const startX = Math.random() * screenWidth;
     const startY = Math.random() * screenHeight;
-    const endX = Math.random() * screenWidth;
-    const endY = Math.random() * screenHeight;
+    const endX = startX + Math.cos(angle) * distance;
+    const endY = startY + Math.sin(angle) * distance;
 
-    span.innerHTML = randomIcon; // Insert the icon HTML inside the span
-    span.classList.add('icon');   // Add an icon class to style it
+    // Element styling
+    if (isShape) {
+        // Create shape element
+        element.classList.add(shapeType);
+        element.style.backgroundColor = randomColor;
+        element.style.width = '20px';
+        element.style.height = '20px';
+    } else {
+        // Create icon element
+        element.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+        element.classList.add('icon');
+        element.style.color = randomColor;
+    }
 
-    // Set initial and final positions
+    // Animation properties
+    const duration = Math.random() * 10 + 8; // 8-18 seconds
+    element.style.setProperty('--delay', `${-Math.random() * duration}s`);
+    element.style.setProperty('--duration', `${duration}s`);
 
-    // Set random properties
-    span.style.setProperty('--delay', `${Math.random() * 5 + 1}s`);       // Random delay
-    span.style.setProperty('--duration', `${Math.random() * 8 + 5}s`);    // Random duration
-    span.style.setProperty('--startX', `${startX}px`);                    // Start X position
-    span.style.setProperty('--startY', `${startY}px`);                    // Start Y position
-    span.style.setProperty('--endX', `${endX}px`);                        // End X position
-    span.style.setProperty('--endY', `${endY}px`);                        // End Y position
-    span.style.setProperty('--startScale', Math.random() * 1 + 0.3);    // Start scale between 0.5 and 2
-    span.style.setProperty('--endScale', Math.random() * 1 + 0.3);      // End scale between 0.5 and 2
+    // Position and scaling
+    const baseScale = isShape ? 0.8 : 1; // Larger icons
+    const startScale = (Math.random() * 0.4 + baseScale).toFixed(2);
+    const endScale = (Math.random() * 0.4 + baseScale).toFixed(2);
 
-    // Set color
-    span.style.setProperty('--color', randomColor);
+    element.style.setProperty('--startX', `${startX}px`);
+    element.style.setProperty('--startY', `${startY}px`);
+    element.style.setProperty('--endX', `${endX}px`);
+    element.style.setProperty('--endY', `${endY}px`);
+    element.style.setProperty('--startScale', startScale);
+    element.style.setProperty('--endScale', endScale);
 
-    document.querySelector('.wrap').appendChild(span);
+    // Subtle aura effect
+    element.style.boxShadow = isShape ? `0 0 8px ${randomColor}` : 'none';
+    element.style.filter = isShape ? 'none' : `drop-shadow(0 0 4px ${randomColor})`;
+
+    document.querySelector('.wrap').appendChild(element);
 }
