@@ -1,141 +1,115 @@
-// Colors array without alpha values
-const colors = [
-    '#e34c26', // HTML5 color
-    '#264de4', // CSS3 color
-    '#f7df1e', // JavaScript color
-    '#306998', // Python color
-    '#b07219', // Java color
-    '#68a063', // Node.js color
-    '#4f5d95', // PHP color
-    '#61dafb', // React color
-    '#b52e31', // Angular color
-    '#42b883', // Vue.js color
-    '#c6538c', // Sass color
-    '#1d365d', // Less color
-    '#563d7c', // Bootstrap color
-    '#21759b', // WordPress color
-    '#24292e', // GitHub color
-    '#f34f29', // Git color
-    '#cb3837', // npm color
-    '#2c8ebb', // Yarn color
-    '#0db7ed', // Docker color
-    '#232f3e', // AWS color
-    '#4285f4', // Google color
-    '#f15025', // Microsoft color
-    '#999999', // Apple color
-    '#f8981d', // Linux color
-    '#a4c639', // Android color
+// Particle System
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let particles = [];
 
-];
-
-// Programming language icons
-const icons = [
-    '<i class="fab fa-html5"></i>',    // HTML5
-    '<i class="fab fa-css3-alt"></i>', // CSS3
-    '<i class="fab fa-js"></i>',       // JavaScript
-    '<i class="fab fa-python"></i>',   // Python
-    '<i class="fab fa-java"></i>',     // Java
-    '<i class="fab fa-node-js"></i>',  // Node.js
-    '<i class="fab fa-php"></i>',      // PHP
-    '<i class="fab fa-react"></i>',    // React
-    '<i class="fab fa-angular"></i>',  // Angular
-    '<i class="fab fa-vuejs"></i>',    // Vue.js
-    '<i class="fab fa-sass"></i>',     // Sass
-    '<i class="fab fa-less"></i>',     // Less
-    '<i class="fab fa-bootstrap"></i>',// Bootstrap
-    '<i class="fab fa-wordpress"></i>',// WordPress
-    '<i class="fab fa-github"></i>',   // GitHub
-    '<i class="fab fa-git"></i>',      // Git
-    '<i class="fab fa-npm"></i>',      // npm
-    '<i class="fab fa-yarn"></i>',     // Yarn
-    '<i class="fab fa-docker"></i>',   // Docker
-    '<i class="fab fa-aws"></i>',      // AWS
-    '<i class="fab fa-google"></i>',   // Google
-    '<i class="fab fa-microsoft"></i>',// Microsoft
-    '<i class="fab fa-apple"></i>',    // Apple
-    '<i class="fab fa-linux"></i>',    // Linux
-    '<i class="fab fa-android"></i>',  // Android
-    '<i class="fab fa-windows"></i>',  // Windows
-    '<i class="fab fa-flutter"></i>',  // Flutter
-    '<i class="fab fa-dart"></i>',     // Dart
-    '<i class="fab fa-laravel"></i>',  // Laravel
-    '<i class="fas fa-database"></i>', // SQL
-    '<i class="fab fa-nuxt-js"></i>',  // Nuxt.js
-    '<i class="fab fa-next-js"></i>',  // Next.js
-    '<i class="fab fa-node-js"></i>',  // Express.js
-    '<i class="fab fa-nest-js"></i>',  // NestJS
-    '<i class="fas fa-database"></i>', // MongoDB
-    '<i class="fas fa-database"></i>', // MySQL
-    '<i class="fas fa-database"></i>', // PostgreSQL
-    '<i class="fab fa-azure"></i>',    // Azure
-    '<i class="fab fa-google"></i>',   // Google Cloud
-    '<i class="fab fa-firebase"></i>', // Firebase
-    '<i class="fas fa-fire"></i>',     // Firestore
-    '<i class="fas fa-database"></i>', // Supabase
-    '<i class="fab fa-gitlab"></i>',   // GitLab
-    '<i class="fab fa-bitbucket"></i>' // Bitbucket
-];
-
-// Shapes array
-const shapes = ['circle', 'square'];
-
-// Get the screen dimensions
-const screenWidth = window.innerWidth;
-const screenHeight = window.innerHeight;
-
-// Create elements with random types (icon or shape)
-const numberOfElements = Math.floor(screenWidth / 12); // Balanced density
-
-for (let i = 1; i <= numberOfElements; i++) {
-    const element = document.createElement('span');
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-
-    // Randomly choose between icon or shape
-    const isShape = Math.random() > 0.5; // 50% chance for shape
-    const shapeType = shapes[Math.floor(Math.random() * shapes.length)];
-
-    // Position and movement parameters
-    const angle = Math.random() * Math.PI * 2;
-    const distance = Math.max(screenWidth, screenHeight) * 1.5;
-    const startX = Math.random() * screenWidth;
-    const startY = Math.random() * screenHeight;
-    const endX = startX + Math.cos(angle) * distance;
-    const endY = startY + Math.sin(angle) * distance;
-
-    // Element styling
-    if (isShape) {
-        // Create shape element
-        element.classList.add(shapeType);
-        element.style.backgroundColor = randomColor;
-        element.style.width = '20px';
-        element.style.height = '20px';
-    } else {
-        // Create icon element
-        element.innerHTML = icons[Math.floor(Math.random() * icons.length)];
-        element.classList.add('icon');
-        element.style.color = randomColor;
+class Particle {
+    constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = Math.random() * 3 - 1.5;
+        this.speedY = Math.random() * 3 - 1.5;
     }
 
-    // Animation properties
-    const duration = Math.random() * 10 + 8; // 8-18 seconds
-    element.style.setProperty('--delay', `${-Math.random() * duration}s`);
-    element.style.setProperty('--duration', `${duration}s`);
+    update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
 
-    // Position and scaling
-    const baseScale = isShape ? 0.8 : 1; // Larger icons
-    const startScale = (Math.random() * 0.4 + baseScale).toFixed(2);
-    const endScale = (Math.random() * 0.4 + baseScale).toFixed(2);
+        if (this.x > canvas.width) this.x = 0;
+        if (this.x < 0) this.x = canvas.width;
+        if (this.y > canvas.height) this.y = 0;
+        if (this.y < 0) this.y = canvas.height;
+    }
 
-    element.style.setProperty('--startX', `${startX}px`);
-    element.style.setProperty('--startY', `${startY}px`);
-    element.style.setProperty('--endX', `${endX}px`);
-    element.style.setProperty('--endY', `${endY}px`);
-    element.style.setProperty('--startScale', startScale);
-    element.style.setProperty('--endScale', endScale);
+    draw() {
+        const gradient = ctx.createRadialGradient(
+            this.x, this.y, 0, this.x, this.y, this.size
+        );
+        gradient.addColorStop(0, 'rgba(255,255,255,0.8)');
+        gradient.addColorStop(1, 'rgba(255,255,255,0)');
 
-    // Subtle aura effect
-    element.style.boxShadow = isShape ? `0 0 8px ${randomColor}` : 'none';
-    element.style.filter = isShape ? 'none' : `drop-shadow(0 0 4px ${randomColor})`;
-
-    document.querySelector('.wrap').appendChild(element);
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+    }
 }
+
+function initParticles() {
+    particles = [];
+    for (let i = 0; i < 100; i++) {
+        particles.push(new Particle());
+    }
+}
+
+function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(particle => {
+        particle.update();
+        particle.draw();
+    });
+    requestAnimationFrame(animateParticles);
+}
+
+// Resize Handler
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    initParticles();
+}
+
+// Cursor Effects
+const cursor = document.querySelector('.cursor');
+const cursorTrail = document.querySelector('.cursor-trail');
+let mouseX = 0, mouseY = 0;
+let trailX = 0, trailY = 0;
+
+document.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursor.style.left = `${mouseX - 10}px`;
+    cursor.style.top = `${mouseY - 10}px`;
+});
+
+function moveTrail() {
+    const diffX = mouseX - trailX;
+    const diffY = mouseY - trailY;
+
+    trailX += diffX * 0.1;
+    trailY += diffY * 0.1;
+
+    cursorTrail.style.left = `${trailX - 4}px`;
+    cursorTrail.style.top = `${trailY - 4}px`;
+
+    requestAnimationFrame(moveTrail);
+}
+
+// Glass Box Parallax
+const glassBox = document.querySelector('.glass-box');
+document.addEventListener('mousemove', e => {
+    const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+    const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+    glassBox.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+});
+
+// Initialize
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+animateParticles();
+moveTrail();
+
+// Interactive Social Icons
+document.querySelectorAll('.social-icons a').forEach(icon => {
+    icon.addEventListener('mousemove', function (e) {
+        const x = e.pageX - this.offsetLeft;
+        const y = e.pageY - this.offsetTop;
+
+        this.style.background = `radial-gradient(circle at ${x}px ${y}px, 
+                    rgba(255,255,255,0.2), rgba(255,255,255,0))`;
+    });
+
+    icon.addEventListener('mouseleave', function () {
+        this.style.background = 'rgba(255,255,255,0.1)';
+    });
+});
