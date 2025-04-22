@@ -90,6 +90,35 @@ document.addEventListener('mousemove', e => {
     glassBox.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
 });
 
+// Theme Toggle (Dark/Light Mode)
+const themeToggle = document.getElementById('theme-toggle');
+// Initialize theme from localStorage or system preference
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'light') {
+  document.body.classList.add('light-theme');
+  themeToggle.textContent = '☀️';
+} else if (savedTheme === 'dark') {
+  themeToggle.textContent = '🌙';
+} else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+  document.body.classList.add('light-theme');
+  themeToggle.textContent = '☀️';
+}
+// Toggle on click
+themeToggle.addEventListener('click', () => {
+  const isLight = document.body.classList.toggle('light-theme');
+  themeToggle.textContent = isLight ? '☀️' : '🌙';
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+});
+
+// Register Service Worker for PWA
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js')
+      .then(reg => console.log('Service Worker registered:', reg))
+      .catch(err => console.error('SW registration failed:', err));
+  });
+}
+
 // Initialize
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
