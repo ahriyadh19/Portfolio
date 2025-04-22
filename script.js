@@ -48,6 +48,8 @@ function animateParticles() {
     particles.forEach(particle => {
         particle.update();
         particle.draw();
+        particle.size *= 0.99; // Gradual shrinking effect
+        if (particle.size < 0.5) particle.size = Math.random() * 2 + 1;
     });
     requestAnimationFrame(animateParticles);
 }
@@ -61,29 +63,24 @@ function resizeCanvas() {
 
 // Cursor Effects
 const cursor = document.querySelector('.cursor');
-const cursorTrail = document.querySelector('.cursor-trail');
 let mouseX = 0, mouseY = 0;
-let trailX = 0, trailY = 0;
 
 document.addEventListener('mousemove', e => {
     mouseX = e.clientX;
     mouseY = e.clientY;
-    cursor.style.left = `${mouseX - 10}px`;
-    cursor.style.top = `${mouseY - 10}px`;
+    cursor.style.left = `${mouseX - 6}px`;
+    cursor.style.top = `${mouseY - 6}px`;
+
+    const trail = document.createElement('div');
+    trail.className = 'cursor-trail';
+    trail.style.left = `${mouseX - 4}px`;
+    trail.style.top = `${mouseY - 4}px`;
+    document.body.appendChild(trail);
+
+    setTimeout(() => {
+        trail.remove();
+    }, 500); // Remove trail after animation
 });
-
-function moveTrail() {
-    const diffX = mouseX - trailX;
-    const diffY = mouseY - trailY;
-
-    trailX += diffX * 0.1;
-    trailY += diffY * 0.1;
-
-    cursorTrail.style.left = `${trailX - 4}px`;
-    cursorTrail.style.top = `${trailY - 4}px`;
-
-    requestAnimationFrame(moveTrail);
-}
 
 // Glass Box Parallax
 const glassBox = document.querySelector('.glass-box');
@@ -97,7 +94,6 @@ document.addEventListener('mousemove', e => {
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 animateParticles();
-moveTrail();
 
 // Interactive Social Icons
 document.querySelectorAll('.social-icons a').forEach(icon => {

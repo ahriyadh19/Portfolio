@@ -62,6 +62,7 @@ main {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  animation: fadeIn 1.5s ease-in-out, float 6s ease-in-out infinite;
 }
 
 h1,
@@ -126,6 +127,24 @@ h4 {
   justify-content: center;
   align-items: center;
   aspect-ratio: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.social-icons a::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: skewX(-45deg);
+  transition: left 0.3s ease;
+}
+
+.social-icons a:hover::after {
+  left: 100%;
 }
 
 @media (hover: hover) {
@@ -158,6 +177,57 @@ h4 {
     font-size: 1rem;
     padding: 0.6rem;
   }
+
+  body {
+    font-size: 90%;
+  }
+
+  .glass-box {
+    padding: 1rem;
+    margin: 0.5rem;
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h4 {
+    font-size: 1rem;
+  }
+
+  .download-button {
+    padding: 0.8rem 1.5rem;
+  }
+
+  .social-icons {
+    grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .social-icons a {
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h4 {
+    font-size: 0.9rem;
+  }
+
+  .download-button {
+    padding: 0.6rem 1rem;
+  }
+
+  .social-icons a {
+    font-size: 0.9rem;
+    padding: 0.4rem;
+  }
 }
 
 @keyframes float {
@@ -171,14 +241,54 @@ h4 {
 }
 
 /* Cursor Styles */
-.cursor,
+.cursor {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1000;
+  mix-blend-mode: difference;
+}
+
 .cursor-trail {
-  display: none;
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, rgba(255, 165, 0, 0.8) 0%, rgba(255, 69, 0, 0) 80%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.7;
+  animation: fadeTrail 0.5s ease-out forwards;
+}
+
+@keyframes fadeTrail {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.5);
+    opacity: 0;
+  }
 }
 
 @media (pointer: fine) {
   .cursor,
   .cursor-trail {
     display: block;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
