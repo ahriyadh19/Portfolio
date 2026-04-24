@@ -387,7 +387,6 @@ html[dir="rtl"] .brand,
 html[dir="rtl"] .hero-actions,
 html[dir="rtl"] .contact-actions,
 html[dir="rtl"] .project-links,
-html[dir="rtl"] .availability-list,
 html[dir="rtl"] .tag-list {
   flex-direction: row-reverse;
 }
@@ -803,6 +802,11 @@ html[dir="rtl"] .link-chip {
   gap: 0.6rem;
 }
 
+.availability-list {
+  flex-direction: column;
+  align-items: stretch;
+}
+
 .card-tag-list {
   margin-top: -0.15rem;
 }
@@ -933,7 +937,8 @@ html[dir="rtl"] .link-chip {
 }
 
 .availability-item {
-  min-width: 10rem;
+  width: 100%;
+  min-width: 0;
   padding: 0.85rem 1rem;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
