@@ -35,6 +35,9 @@ import {
 const themeStorageKey = "portfolio-theme";
 const languageStorageKey = "portfolio-language";
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+let revealObserver;
+let scrollSpyObserver;
+let kineticSceneInitialized = false;
 const orbitalScene = [
     { size: 320, top: "8%", left: "-6%", color: "rgba(255, 159, 28, 0.34)", duration: "18s", parallax: 0.2, driftX: -10, driftY: 0, scale: 1.1 },
     { size: 260, top: "18%", right: "4%", color: "rgba(46, 196, 182, 0.28)", duration: "22s", parallax: 0.14, driftX: 20, driftY: -10, scale: 0.9 },
@@ -207,6 +210,10 @@ function setLanguage(language) {
     }
 
     setTheme(document.body.dataset.theme || "dark");
+    initializeKineticScene();
+    initializeReveal();
+    initializeSpotlight();
+    initializeScrollSpy();
 }
 
 function setTheme(theme) {
@@ -272,19 +279,20 @@ function initializeReveal() {
         return;
     }
 
-    const observer = new IntersectionObserver(
+    revealObserver?.disconnect();
+    revealObserver = new IntersectionObserver(
         (entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add("is-visible");
-                    observer.unobserve(entry.target);
+                    revealObserver?.unobserve(entry.target);
                 }
             });
         },
         { threshold: 0.18 }
     );
 
-    items.forEach((item) => observer.observe(item));
+    items.forEach((item) => revealObserver.observe(item));
 }
 
 function initializeKineticScene() {
@@ -316,18 +324,25 @@ function initializeKineticScene() {
         document.body.prepend(scene);
     }
 
-    document.body.addEventListener("pointermove", (event) => {
-        const x = ((event.clientX / window.innerWidth) - 0.5) * 36;
-        const y = ((event.clientY / window.innerHeight) - 0.5) * 30;
-        document.documentElement.style.setProperty("--orb-shift-x", `${x}px`);
-        document.documentElement.style.setProperty("--orb-shift-y", `${y}px`);
-    }, { passive: true });
+    if (!kineticSceneInitialized) {
+        document.body.addEventListener("pointermove", (event) => {
+            const x = ((event.clientX / window.innerWidth) - 0.5) * 36;
+            const y = ((event.clientY / window.innerHeight) - 0.5) * 30;
+            document.documentElement.style.setProperty("--orb-shift-x", `${x}px`);
+            document.documentElement.style.setProperty("--orb-shift-y", `${y}px`);
+        }, { passive: true });
+        kineticSceneInitialized = true;
+    }
 }
 
 function initializeSpotlight() {
     document
         .querySelectorAll(".hero-panel, .spotlight-card, .content-card, .project-card, .experience-card, .education-card, .stack-card, .stat-card, .principle-card, .contact-panel")
         .forEach((card) => {
+            if (card.dataset.spotlightBound === "true") {
+                return;
+            }
+
             card.addEventListener("pointermove", (event) => {
                 const rect = card.getBoundingClientRect();
                 const x = ((event.clientX - rect.left) / rect.width) * 100;
@@ -349,6 +364,8 @@ function initializeSpotlight() {
                     card.style.transform = "";
                 }
             });
+
+            card.dataset.spotlightBound = "true";
         });
 }
 
@@ -360,7 +377,8 @@ function initializeScrollSpy() {
     const sections = [...document.querySelectorAll("main section[id]")];
     const navLinks = [...document.querySelectorAll(".nav-list a")];
 
-    const observer = new IntersectionObserver(
+    scrollSpyObserver?.disconnect();
+    scrollSpyObserver = new IntersectionObserver(
         (entries) => {
             entries.forEach((entry) => {
                 if (!entry.isIntersecting) {
@@ -380,7 +398,7 @@ function initializeScrollSpy() {
         { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
     );
 
-    sections.forEach((section) => observer.observe(section));
+    sections.forEach((section) => scrollSpyObserver.observe(section));
 }
 
 function initializeServiceWorker() {
