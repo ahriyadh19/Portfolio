@@ -6,6 +6,10 @@ function renderIcon(iconClass, label) {
   return `<span class="icon-shell" aria-hidden="true"><i class="${iconClass || "fa-solid fa-circle"} ui-icon"></i></span><span>${label}</span>`;
 }
 
+function renderCardIcon(iconClass) {
+  return `<span class="card-icon" aria-hidden="true"><i class="${iconClass || "fa-solid fa-circle"} ui-icon"></i></span>`;
+}
+
 function renderStackItem(entry) {
   if (typeof entry === "string") {
     return `<li>${entry}</li>`;
@@ -71,12 +75,22 @@ export function renderExperience(items) {
     .map(
       (item) => `
         <article class="experience-card" data-reveal>
+          <div class="card-kicker">
+            ${renderCardIcon(item.icon)}
+            <div class="card-kicker-copy">
+              <span class="card-kicker-label">${item.company}</span>
+              <span class="card-kicker-meta">${item.location}</span>
+            </div>
+          </div>
           <div class="project-top">
             <div>
               <h3>${item.role}</h3>
               <p class="project-meta">${item.company} · ${item.location}</p>
             </div>
             <span class="project-state">${item.period}</span>
+          </div>
+          <div class="tag-list card-tag-list">
+            ${(item.tags || []).map((tag) => renderTag(tag, true)).join("")}
           </div>
           <ul class="bullet-list experience-list">
             ${renderBulletList(item.highlights)}
@@ -91,12 +105,22 @@ export function renderEducation(items) {
     .map(
       (item) => `
         <article class="education-card" data-reveal>
+          <div class="card-kicker">
+            ${renderCardIcon(item.icon)}
+            <div class="card-kicker-copy">
+              <span class="card-kicker-label">${item.school}</span>
+              <span class="card-kicker-meta">${item.location}</span>
+            </div>
+          </div>
           <div class="project-top">
             <div>
               <h3>${item.degree}</h3>
               <p class="project-meta">${item.school} · ${item.location}</p>
             </div>
             <span class="project-state">${item.period}</span>
+          </div>
+          <div class="tag-list card-tag-list">
+            ${(item.tags || []).map((tag) => renderTag(tag, true)).join("")}
           </div>
           <ul class="bullet-list experience-list">
             ${renderBulletList(item.details)}
@@ -111,6 +135,13 @@ export function renderProjects(items, copy = {}) {
     .map(
       (item) => `
         <article class="project-card" data-reveal>
+          <div class="card-kicker">
+            ${renderCardIcon(item.icon)}
+            <div class="card-kicker-copy">
+              <span class="card-kicker-label">${item.name}</span>
+              <span class="card-kicker-meta">${item.tech.slice(0, 2).join(" · ")}</span>
+            </div>
+          </div>
           <div class="project-top">
             <div>
               <h3>${item.name}</h3>

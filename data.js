@@ -24,7 +24,7 @@ export const hero = {
       label: "View projects",
       href: "#projects",
       className: "secondary",
-      icon: "fa-solid fa-arrow-down-right-from-square",
+      icon: "fa-solid fa-eye",
     },
   ],
 };
@@ -81,10 +81,12 @@ export const principles = [
 
 export const experience = [
   {
+    icon: "fa-solid fa-briefcase",
     company: "Go2 Global Sdn Bhd",
     location: "Cyberjaya, Malaysia",
     role: "Full Stack Developer",
     period: "05/2023 - Present",
+    tags: ["Web apps", "Databases", "Delivery"],
     highlights: [
       "Designing and developing client-side and server-side web applications.",
       "Coding, troubleshooting, and optimizing software solutions.",
@@ -94,10 +96,12 @@ export const experience = [
     ],
   },
   {
+    icon: "fa-solid fa-laptop-code",
     company: "Freelancer",
     location: "Online",
     role: "Software Engineer",
     period: "01/2022 - Present",
+    tags: ["Client work", "Full stack", "Support"],
     highlights: [
       "Developed custom software solutions to meet specific client needs.",
       "Tested and debugged deliverables to keep product quality high.",
@@ -110,10 +114,12 @@ export const experience = [
 
 export const education = [
   {
+    icon: "fa-solid fa-graduation-cap",
     school: "Multimedia University - MMU",
     location: "Cyberjaya, Malaysia",
     degree: "Software Engineering",
     period: "Completed",
+    tags: ["Software engineering", "Application development", "Product thinking"],
     details: [
       "Focused on software engineering foundations, application development, and long-term product thinking.",
     ],
@@ -122,6 +128,7 @@ export const education = [
 
 export const projects = [
   {
+    icon: "fa-solid fa-code",
     name: "JSON Explorer",
     description: "A utility for inspecting nested JSON structures quickly with a cleaner developer workflow.",
     tech: ["Next.js", "TypeScript"],
@@ -130,6 +137,7 @@ export const projects = [
     url: "https://json-explorer-orpin.vercel.app/",
   },
   {
+    icon: "fa-solid fa-code-compare",
     name: "Keyset Compare",
     description: "A compact comparison tool for spotting key mismatches across object shapes and datasets.",
     tech: ["Next.js", "TypeScript"],
@@ -138,6 +146,7 @@ export const projects = [
     url: "https://keyset-compare.vercel.app/",
   },
   {
+    icon: "fa-solid fa-key",
     name: "Password Generator",
     description: "A fast generator for producing strong, customizable passwords with minimal friction.",
     tech: ["Next.js", "TypeScript"],
@@ -146,6 +155,7 @@ export const projects = [
     url: "https://password-generator-weld.vercel.app/",
   },
   {
+    icon: "fa-solid fa-camera",
     name: "Scan Flow",
     description: "A browser-based scanner workflow for handling document and image capture with a cleaner flow.",
     tech: ["Next.js", "TypeScript"],
@@ -154,6 +164,7 @@ export const projects = [
     url: "https://scan-flow-one.vercel.app/",
   },
   {
+    icon: "fa-solid fa-list-check",
     name: "Task Manager App",
     description: "A full-stack productivity app referenced in the project profile, centered on practical day-to-day task management.",
     tech: ["React", "Node.js", "MongoDB"],

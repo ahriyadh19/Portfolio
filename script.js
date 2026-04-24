@@ -201,7 +201,7 @@ function setLanguage(language) {
 
     const languageButton = document.querySelector("#language-toggle");
     if (languageButton) {
-        languageButton.textContent = language === "ar" ? "EN" : "AR";
+        languageButton.textContent = language === "ar" ? "🇺🇸" : "🇸🇦";
         languageButton.setAttribute("aria-label", locale.ui.languageToggleLabel);
         languageButton.setAttribute("aria-pressed", String(language === "ar"));
     }

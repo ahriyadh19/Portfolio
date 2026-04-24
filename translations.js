@@ -125,7 +125,7 @@ export const arabicContent = {
         label: "عرض المشاريع",
         href: "#projects",
         className: "secondary",
-        icon: "fa-solid fa-arrow-down-right-from-square",
+        icon: "fa-solid fa-eye",
       },
     ],
   },
@@ -163,10 +163,12 @@ export const arabicContent = {
   ],
   experience: [
     {
+      icon: "fa-solid fa-briefcase",
       company: "Go2 Global Sdn Bhd",
       location: "سايبرجايا، ماليزيا",
       role: "مطور برمجيات متكامل",
       period: "05/2023 - حتى الآن",
+      tags: ["تطبيقات ويب", "قواعد بيانات", "تسليم"],
       highlights: [
         "تصميم وتطوير تطبيقات ويب من جهة العميل والخادم.",
         "كتابة الحلول البرمجية وتحسينها ومعالجة المشكلات التقنية.",
@@ -176,10 +178,12 @@ export const arabicContent = {
       ],
     },
     {
+      icon: "fa-solid fa-laptop-code",
       company: "Freelancer",
       location: "عن بعد",
       role: "مهندس برمجيات",
       period: "01/2022 - حتى الآن",
+      tags: ["عملاء", "متكامل", "دعم"],
       highlights: [
         "تطوير حلول برمجية مخصصة بحسب احتياجات العملاء.",
         "اختبار وتسحيح المنتجات للحفاظ على جودة التنفيذ.",
@@ -191,10 +195,12 @@ export const arabicContent = {
   ],
   education: [
     {
+      icon: "fa-solid fa-graduation-cap",
       school: "Multimedia University - MMU",
       location: "سايبرجايا، ماليزيا",
       degree: "هندسة البرمجيات",
       period: "مكتمل",
+      tags: ["هندسة البرمجيات", "تطوير التطبيقات", "تفكير منتجي"],
       details: [
         "تركيز على أساسيات هندسة البرمجيات وتطوير التطبيقات وبناء المنتجات على المدى الطويل.",
       ],
@@ -202,6 +208,7 @@ export const arabicContent = {
   ],
   projects: [
     {
+      icon: "fa-solid fa-code",
       name: "JSON Explorer",
       description: "أداة لفحص بنى JSON المتداخلة بسرعة مع سير عمل أنظف للمطور.",
       tech: ["Next.js", "TypeScript"],
@@ -210,6 +217,7 @@ export const arabicContent = {
       url: "https://json-explorer-orpin.vercel.app/",
     },
     {
+      icon: "fa-solid fa-code-compare",
       name: "Keyset Compare",
       description: "أداة مقارنة خفيفة لاكتشاف اختلاف المفاتيح بين الهياكل والبيانات.",
       tech: ["Next.js", "TypeScript"],
@@ -218,6 +226,7 @@ export const arabicContent = {
       url: "https://keyset-compare.vercel.app/",
     },
     {
+      icon: "fa-solid fa-key",
       name: "Password Generator",
       description: "مولد سريع لإنتاج كلمات مرور قوية وقابلة للتخصيص بأقل تعقيد ممكن.",
       tech: ["Next.js", "TypeScript"],
@@ -226,6 +235,7 @@ export const arabicContent = {
       url: "https://password-generator-weld.vercel.app/",
     },
     {
+      icon: "fa-solid fa-camera",
       name: "Scan Flow",
       description: "سير عمل للمسح الضوئي داخل المتصفح للتعامل مع التقاط المستندات والصور بشكل أنظف.",
       tech: ["Next.js", "TypeScript"],
@@ -234,6 +244,7 @@ export const arabicContent = {
       url: "https://scan-flow-one.vercel.app/",
     },
     {
+      icon: "fa-solid fa-list-check",
       name: "Task Manager App",
       description: "تطبيق إنتاجية متكامل يركز على إدارة المهام اليومية بشكل عملي.",
       tech: ["React", "Node.js", "MongoDB"],
