@@ -292,6 +292,7 @@ export const tickerItems = [
   "Figma",
   "Git",
   "Ubuntu",
+  "Pop!_OS",
 ];
 
 export const contact = {

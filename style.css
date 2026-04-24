@@ -220,15 +220,8 @@ select {
 .header-actions {
   display: inline-flex;
   align-items: center;
+  flex-direction: row;
   gap: 0.6rem;
-}
-
-.header-actions > #language-toggle {
-  order: 1;
-}
-
-.header-actions > #theme-toggle {
-  order: 2;
 }
 
 .brand {
@@ -371,12 +364,8 @@ html[dir="rtl"] .site-nav {
   direction: rtl;
 }
 
-html[dir="rtl"] .header-actions > #theme-toggle {
-  order: 1;
-}
-
-html[dir="rtl"] .header-actions > #language-toggle {
-  order: 2;
+html[dir="rtl"] .header-actions {
+  flex-direction: row-reverse;
 }
 
 html[dir="rtl"] .brand,
