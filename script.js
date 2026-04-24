@@ -107,6 +107,27 @@ function getLocaleBundle(language) {
     };
 }
 
+function getOrderedNavigation(items, language) {
+    return language === "ar" ? [...items].reverse() : items;
+}
+
+function orderHeaderActions(language) {
+    const headerActions = document.querySelector(".header-actions");
+    const languageButton = document.querySelector("#language-toggle");
+    const themeButton = document.querySelector("#theme-toggle");
+
+    if (!headerActions || !languageButton || !themeButton) {
+        return;
+    }
+
+    if (language === "ar") {
+        headerActions.replaceChildren(themeButton, languageButton);
+        return;
+    }
+
+    headerActions.replaceChildren(languageButton, themeButton);
+}
+
 function applyStaticCopy(copy) {
     setText(".skip-link", copy.skipLink);
     setText(".brand-text span", copy.brandRole);
@@ -182,7 +203,7 @@ function setLanguage(language) {
     const tickerTrack = document.querySelector("#ticker-track");
     const contactActions = document.querySelector("#contact-actions");
 
-    if (navList) navList.innerHTML = renderNav(locale.navigation);
+    if (navList) navList.innerHTML = renderNav(getOrderedNavigation(locale.navigation, language));
     if (heroActions) heroActions.innerHTML = renderButtons(locale.hero.actions);
     if (socialLinks) socialLinks.innerHTML = renderSocialLinks(locale.profile.socials);
     if (heroMeta) heroMeta.innerHTML = renderStats(locale.stats);
@@ -209,6 +230,7 @@ function setLanguage(language) {
         languageButton.setAttribute("aria-pressed", String(language === "ar"));
     }
 
+    orderHeaderActions(language);
     setTheme(document.body.dataset.theme || "dark");
     initializeKineticScene();
     initializeReveal();

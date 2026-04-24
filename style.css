@@ -223,6 +223,14 @@ select {
   gap: 0.6rem;
 }
 
+.header-actions > #language-toggle {
+  order: 1;
+}
+
+.header-actions > #theme-toggle {
+  order: 2;
+}
+
 .brand {
   display: inline-flex;
   align-items: center;
@@ -355,14 +363,29 @@ html[dir="rtl"] body {
   text-align: right;
 }
 
+html[dir="rtl"] .site-header {
+  direction: rtl;
+}
+
+html[dir="rtl"] .site-nav {
+  direction: rtl;
+}
+
+html[dir="rtl"] .header-actions > #theme-toggle {
+  order: 1;
+}
+
+html[dir="rtl"] .header-actions > #language-toggle {
+  order: 2;
+}
+
 html[dir="rtl"] .brand,
 html[dir="rtl"] .nav-list,
 html[dir="rtl"] .hero-actions,
 html[dir="rtl"] .contact-actions,
 html[dir="rtl"] .project-links,
 html[dir="rtl"] .availability-list,
-html[dir="rtl"] .tag-list,
-html[dir="rtl"] .header-actions {
+html[dir="rtl"] .tag-list {
   flex-direction: row-reverse;
 }
 
