@@ -15,6 +15,10 @@ export const uiByLanguage = {
       dark: "Switch to dark theme",
     },
     languageToggleLabel: "Switch language",
+    navToggleLabel: {
+      open: "Open navigation",
+      close: "Close navigation",
+    },
     heroEyebrow: "Portfolio 2026",
     heroTitle: "Building clean systems with a playful edge.",
     introLabel: "Quick snapshot",
@@ -63,6 +67,10 @@ export const uiByLanguage = {
       dark: "التبديل إلى الوضع الداكن",
     },
     languageToggleLabel: "تبديل اللغة",
+    navToggleLabel: {
+      open: "فتح التنقل",
+      close: "إغلاق التنقل",
+    },
     heroEyebrow: "ملف أعمال 2026",
     heroTitle: "أبني أنظمة نظيفة بروح مرحة ولمسة خاصة.",
     introLabel: "نبذة سريعة",
@@ -137,6 +145,19 @@ export const arabicContent = {
   profile: {
     about:
       "أستمتع بتحويل الأفكار البسيطة إلى تجارب رقمية نظيفة وواضحة، من الأدوات الصغيرة إلى المنتجات الكاملة. عملي يوازن بين التنظيم وسهولة الوصول والأداء وفضول المصادر المفتوحة ولمسة بصرية مختلفة لكن محسوبة.",
+    socials: [
+      { label: "البريد", shortLabel: "EM", icon: "fa-solid fa-envelope", href: "mailto:ahriyadh19@gmail.com" },
+      { label: "الهاتف", shortLabel: "PH", icon: "fa-solid fa-phone", href: "tel:+601119234237" },
+      { label: "لينكدإن", shortLabel: "LI", icon: "fa-brands fa-linkedin-in", href: "https://www.linkedin.com/in/ahriyadh19/" },
+      { label: "جيت هب", shortLabel: "GH", icon: "fa-brands fa-github", href: "https://github.com/ahriyadh19" },
+      { label: "فيسبوك", shortLabel: "FB", icon: "fa-brands fa-facebook-f", href: "https://www.facebook.com/ahriyadh19" },
+      { label: "إنستغرام", shortLabel: "IG", icon: "fa-brands fa-instagram", href: "https://www.instagram.com/ahriyadh19" },
+      { label: "إكس", shortLabel: "X", icon: "fa-brands fa-x-twitter", href: "https://twitter.com/ahriyadh19" },
+      { label: "WakaTime", shortLabel: "WK", icon: "fa-regular fa-clock", href: "https://wakatime.com/@ahriyadh19" },
+      { label: "تيليجرام", shortLabel: "TG", icon: "fa-brands fa-telegram", href: "https://t.me/ahriyadh19" },
+      { label: "واتساب", shortLabel: "WA", icon: "fa-brands fa-whatsapp", href: "https://wa.me/message/POCA2ZY4IN4BN1" },
+      { label: "ماسنجر", shortLabel: "MS", icon: "fa-brands fa-facebook-messenger", href: "https://m.me/ahriyadh19" },
+    ],
   },
   message: {
     copy:
@@ -186,7 +207,7 @@ export const arabicContent = {
       tags: ["عملاء", "متكامل", "دعم"],
       highlights: [
         "تطوير حلول برمجية مخصصة بحسب احتياجات العملاء.",
-        "اختبار وتسحيح المنتجات للحفاظ على جودة التنفيذ.",
+        "اختبار المنتجات وتصحيحها للحفاظ على جودة التنفيذ.",
         "التعاون المباشر مع العملاء لصياغة حلول مناسبة لهم.",
         "تنفيذ أعمال متكاملة عبر عدة لغات وأدوات وتقنيات.",
         "تقديم الدعم والصيانة بعد التسليم عند الحاجة.",
@@ -351,7 +372,7 @@ export const arabicContent = {
   ],
   contact: {
     copy:
-      "إذا كانت لديك فكرة منتج أو واجهة أمامية تحتاج بنية أوضح أو بناء متكامل يحتاج الانتقال من الفكرة إلى برنامج يعمل، فلنتحدث.",
+      "إذا كانت لديك فكرة منتج، أو واجهة أمامية تحتاج بنية أوضح، أو بناء متكامل يحتاج الانتقال من الفكرة إلى برنامج يعمل، فلنتحدث.",
     actions: [
       { label: "راسلني بالبريد", shortLabel: "EM", icon: "fa-solid fa-envelope", href: "mailto:ahriyadh19@gmail.com" },
       { label: "راسلني على لينكدإن", shortLabel: "LI", icon: "fa-brands fa-linkedin-in", href: "https://www.linkedin.com/in/ahriyadh19/" },
