@@ -101,14 +101,14 @@ export const uiByLanguage = {
 
 export const arabicContent = {
   navigation: [
-    { label: "الأعلى", href: "#top" },
-    { label: "نبذة", href: "#about" },
-    { label: "الخبرة", href: "#experience" },
-    { label: "الدراسة", href: "#education" },
-    { label: "المشاريع", href: "#projects" },
-    { label: "التقنيات", href: "#stack" },
-    { label: "الآن", href: "#now" },
     { label: "تواصل", href: "#contact" },
+    { label: "الآن", href: "#now" },
+    { label: "التقنيات", href: "#stack" },
+    { label: "المشاريع", href: "#projects" },
+    { label: "الدراسة", href: "#education" },
+    { label: "الخبرة", href: "#experience" },
+    { label: "نبذة", href: "#about" },
+    { label: "الأعلى", href: "#top" },
   ],
   hero: {
     summary:

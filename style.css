@@ -206,6 +206,8 @@ select {
   z-index: 20;
   display: grid;
   grid-template-columns: auto 1fr auto;
+  grid-template-areas: "brand nav actions";
+  direction: ltr;
   align-items: center;
   gap: 1rem;
   padding: 0.9rem 1rem;
@@ -218,17 +220,22 @@ select {
 }
 
 .header-actions {
+  grid-area: actions;
   display: inline-flex;
   align-items: center;
-  flex-direction: row;
+  direction: ltr;
   gap: 0.6rem;
+  justify-self: end;
 }
 
 .brand {
+  grid-area: brand;
   display: inline-flex;
   align-items: center;
   gap: 0.85rem;
   text-decoration: none;
+  justify-self: start;
+  direction: ltr;
 }
 
 .brand-mark {
@@ -261,6 +268,8 @@ select {
 }
 
 .site-nav {
+  grid-area: nav;
+  direction: ltr;
   overflow-x: auto;
   scrollbar-width: none;
 }
@@ -357,19 +366,24 @@ html[dir="rtl"] body {
 }
 
 html[dir="rtl"] .site-header {
+  grid-template-areas: "actions nav brand";
+}
+
+html[dir="rtl"] .header-actions {
   direction: rtl;
+  justify-self: start;
+}
+
+html[dir="rtl"] .brand {
+  direction: rtl;
+  justify-self: end;
 }
 
 html[dir="rtl"] .site-nav {
   direction: rtl;
 }
 
-html[dir="rtl"] .header-actions {
-  flex-direction: row-reverse;
-}
-
 html[dir="rtl"] .brand,
-html[dir="rtl"] .nav-list,
 html[dir="rtl"] .hero-actions,
 html[dir="rtl"] .contact-actions,
 html[dir="rtl"] .project-links,
@@ -1160,11 +1174,19 @@ html[dir="rtl"] .link-chip {
 
   .site-header {
     grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "brand actions"
+      "nav nav";
     border-radius: 28px;
   }
 
+  html[dir="rtl"] .site-header {
+    grid-template-areas:
+      "actions brand"
+      "nav nav";
+  }
+
   .site-nav {
-    grid-column: 1 / -1;
     order: 3;
   }
 
