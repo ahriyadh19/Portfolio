@@ -112,6 +112,19 @@ function getOrderedNavigation(items, language) {
     return language === "ar" ? [...items].reverse() : items;
 }
 
+function getTickerEntries(items, groups) {
+    const iconByLabel = new Map(
+        groups.flatMap((group) =>
+            (group.items || []).map((entry) => [entry.label, entry.icon])
+        )
+    );
+
+    return items.map((label) => ({
+        label,
+        icon: iconByLabel.get(label) || "fa-solid fa-circle",
+    }));
+}
+
 function isMobileNavOpen() {
     return document.body.dataset.navOpen === "true";
 }
@@ -237,7 +250,7 @@ function setLanguage(language) {
     if (stackGrid) stackGrid.innerHTML = renderStackGroups(locale.stackGroups);
     if (nowList) nowList.innerHTML = renderBulletList(locale.now.priorities);
     if (availabilityList) availabilityList.innerHTML = renderAvailability(locale.availability);
-    if (tickerTrack) tickerTrack.innerHTML = renderTicker(tickerItems);
+    if (tickerTrack) tickerTrack.innerHTML = renderTicker(getTickerEntries(tickerItems, locale.stackGroups));
     if (contactActions) contactActions.innerHTML = renderContactPills(locale.contact.actions);
 
     const languageButton = document.querySelector("#language-toggle");

@@ -1208,6 +1208,24 @@ body[data-language="en"] .stat-card {
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
 }
 
+.ticker-pill.with-icon::before {
+  display: none;
+}
+
+.ticker-pill .icon-shell {
+  display: inline-grid;
+  place-items: center;
+  width: 1.45rem;
+  height: 1.45rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+.ticker-pill .ui-icon {
+  font-size: 0.78rem;
+}
+
 .contact-panel {
   display: grid;
   grid-template-columns: 1.4fr 1fr;

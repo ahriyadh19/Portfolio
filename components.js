@@ -233,7 +233,15 @@ export function renderAvailability(items) {
 
 export function renderTicker(items) {
   const duplicated = [...items, ...items];
-  return duplicated.map((item) => `<span class="ticker-pill">${escapeHtml(item)}</span>`).join("");
+  return duplicated
+    .map((item) => {
+      if (typeof item === "string") {
+        return `<span class="ticker-pill">${escapeHtml(item)}</span>`;
+      }
+
+      return `<span class="ticker-pill with-icon"><span class="icon-shell" aria-hidden="true">${renderIconGlyph(item.icon)}</span><span>${escapeHtml(item.label)}</span></span>`;
+    })
+    .join("");
 }
 
 export function renderContactPills(items) {
