@@ -124,7 +124,7 @@ export const arabicContent = {
     actions: [
       {
         label: "تحميل السيرة الذاتية",
-        href: "assets/ahmed_riyadh_resume.pdf",
+        href: "assets/docs/ahmed_riyadh_resume.pdf",
         className: "primary",
         icon: "fa-solid fa-file-arrow-down",
         download: true,

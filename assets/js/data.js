@@ -15,7 +15,7 @@ export const hero = {
   actions: [
     {
       label: "Download resume",
-      href: "assets/ahmed_riyadh_resume.pdf",
+      href: "assets/docs/ahmed_riyadh_resume.pdf",
       className: "primary",
       icon: "fa-solid fa-file-arrow-down",
       download: true,
