@@ -264,16 +264,7 @@ export const arabicContent = {
       tags: ["ماسح", "سير عمل"],
       state: "مباشر",
       url: "https://scan-flow-one.vercel.app/",
-    },
-    {
-      icon: "fa-solid fa-list-check",
-      name: "Task Manager App",
-      description: "تطبيق إنتاجية متكامل يركز على إدارة المهام اليومية بشكل عملي.",
-      tech: ["React", "Node.js", "MongoDB"],
-      tags: ["متكامل", "إنتاجية"],
-      state: "مستودع",
-      repo: "https://github.com/ahriyadh19/task-manager",
-    },
+    }
   ],
   stackGroups: [
     {
