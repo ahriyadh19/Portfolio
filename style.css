@@ -815,10 +815,11 @@ html[dir="rtl"] .link-chip {
 .link-chip span:last-child,
 .contact-pill span:last-child {
   min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .contact-pill span:last-child {
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .about-layout,
@@ -1433,12 +1434,18 @@ body[data-language="en"] .stat-card {
     width: min(calc(100% - 1rem), var(--max-width));
   }
 
+  .site-shell::before {
+    opacity: 0.18;
+    width: min(88vw, 36rem);
+  }
+
   .site-header {
     grid-template-columns: 1fr auto;
     grid-template-areas:
       "brand actions"
       "nav nav";
     border-radius: 28px;
+    padding: 0.85rem;
   }
 
   html[dir="rtl"] .site-header {
@@ -1518,7 +1525,7 @@ body[data-language="en"] .stat-card {
   .nav-list a {
     width: 100%;
     justify-content: flex-start;
-    padding: 0.85rem 0.95rem;
+    padding: 0.9rem 1rem;
   }
 
   html[dir="rtl"] .nav-list a {
@@ -1531,6 +1538,35 @@ body[data-language="en"] .stat-card {
     grid-template-columns: 1fr;
   }
 
+  .contact-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-panel,
+  .spotlight-card,
+  .content-card,
+  .contact-panel,
+  .project-card,
+  .experience-card,
+  .education-card,
+  .stack-card,
+  .stat-card,
+  .principle-card {
+    padding: 1.15rem;
+  }
+
+  .project-card,
+  .experience-card,
+  .education-card,
+  .stack-card,
+  .stat-card,
+  .principle-card,
+  .content-card,
+  .spotlight-card,
+  .contact-panel {
+    height: auto;
+  }
+
   .hero-meta,
   .stats-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1538,13 +1574,16 @@ body[data-language="en"] .stat-card {
 
   .hero-meta,
   .stats-grid,
-  .social-grid,
   .experience-grid,
-  .education-grid,
+  .education-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .social-grid,
   .projects-grid,
   .stack-grid,
   .principles-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .display-title {
@@ -1552,9 +1591,37 @@ body[data-language="en"] .stat-card {
     font-size: clamp(2.3rem, 11vw, 3.4rem);
   }
 
+  .hero-summary {
+    margin: 1rem 0 1.25rem;
+  }
+
+  .section {
+    scroll-margin-top: 6rem;
+  }
+
+  #main-content {
+    gap: 3rem;
+  }
+
   .section h2,
   .intro-card h2 {
     font-size: clamp(1.65rem, 7.5vw, 2.4rem);
+  }
+
+  body::before,
+  .motion-orbs {
+    opacity: 0.18;
+  }
+
+  body::after {
+    opacity: 0.22;
+    filter: blur(28px);
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    filter: none;
+    transform: none;
   }
 }
 
@@ -1583,7 +1650,24 @@ body[data-language="en"] .stat-card {
   .header-actions,
   html[dir="rtl"] .header-actions {
     justify-self: stretch;
-    justify-content: space-between;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: 0.65rem;
+  }
+
+  html[dir="rtl"] .header-actions {
+    justify-content: flex-end;
+  }
+
+  .language-toggle {
+    min-width: 0;
+    width: auto;
+    flex: 1 1 auto;
+  }
+
+  .nav-toggle,
+  .theme-toggle {
+    flex: 0 0 2.9rem;
   }
 
   .site-nav {
@@ -1605,9 +1689,16 @@ body[data-language="en"] .stat-card {
     grid-template-columns: 1fr;
   }
 
+  .projects-grid,
+  .stack-grid,
+  .principles-grid,
+  .contact-actions {
+    grid-template-columns: 1fr;
+  }
+
   .display-title {
     max-width: 100%;
-    font-size: clamp(2.05rem, 10vw, 3rem);
+    font-size: clamp(1.9rem, 10vw, 2.8rem);
   }
 
   .hero-summary,
@@ -1617,10 +1708,19 @@ body[data-language="en"] .stat-card {
     font-size: 0.98rem;
   }
 
+  .hero-summary,
+  .section-heading p {
+    line-height: 1.7;
+  }
+
   .button,
   .link-chip,
   .contact-pill {
     width: 100%;
+  }
+
+  .contact-pill {
+    min-height: 3.2rem;
   }
 
   .social-grid {
@@ -1656,15 +1756,9 @@ body[data-language="en"] .stat-card {
     font-size: 0.95rem;
   }
 
-  .button,
-  .link-chip,
-  .contact-pill,
-  .language-toggle {
-    width: 100%;
-  }
-
   .header-actions {
     width: 100%;
+    align-items: center;
   }
 
   .nav-toggle,
@@ -1695,6 +1789,26 @@ body[data-language="en"] .stat-card {
     justify-content: flex-start;
   }
 
+  .project-top,
+  .card-kicker {
+    gap: 0.75rem;
+  }
+
+  .project-links {
+    margin-top: 0.35rem;
+  }
+
+  .project-state,
+  .tag,
+  .ticker-pill {
+    font-size: 0.8rem;
+  }
+
+  .project-state {
+    white-space: normal;
+    text-align: center;
+  }
+
   .hero-panel,
   .spotlight-card,
   .content-card,
@@ -1710,7 +1824,22 @@ body[data-language="en"] .stat-card {
 
   .hero-actions,
   .contact-actions {
+    gap: 0.65rem;
     margin-bottom: 1rem;
+  }
+
+  .contact-pill {
+    min-height: 3rem;
+    padding-inline: 0.9rem;
+  }
+
+  .ticker {
+    padding: 0.85rem 0;
+  }
+
+  .ticker::before,
+  .ticker::after {
+    width: 2.5rem;
   }
 }
 
@@ -1728,12 +1857,13 @@ body[data-language="en"] .stat-card {
     padding: 0.65rem;
   }
 
-  .brand {
-    gap: 0.65rem;
+  .header-actions,
+  html[dir="rtl"] .header-actions {
+    gap: 0.5rem;
   }
 
-  .header-actions {
-    gap: 0.45rem;
+  .brand {
+    gap: 0.65rem;
   }
 
   .brand-mark {
@@ -1741,13 +1871,27 @@ body[data-language="en"] .stat-card {
     height: 2.45rem;
   }
 
+  .brand-text strong {
+    font-size: 0.9rem;
+  }
+
   .brand-text span {
     font-size: 0.74rem;
+  }
+
+  .display-title {
+    font-size: clamp(1.75rem, 11vw, 2.35rem);
+  }
+
+  .section h2,
+  .intro-card h2 {
+    font-size: clamp(1.45rem, 8vw, 1.95rem);
   }
 
   .eyebrow,
   .card-label {
     letter-spacing: 0.12em;
+    font-size: 0.72rem;
   }
 
   .hero-panel,
@@ -1761,6 +1905,28 @@ body[data-language="en"] .stat-card {
   .stat-card,
   .principle-card {
     padding: 0.9rem;
+  }
+
+  .button,
+  .link-chip,
+  .contact-pill {
+    min-height: 2.85rem;
+    padding: 0.78rem 0.95rem;
+  }
+
+  .contact-pill {
+    justify-content: space-between;
+  }
+
+  .tag-list,
+  .availability-list,
+  .project-links {
+    gap: 0.5rem;
+  }
+
+  .card-icon {
+    width: 2.45rem;
+    height: 2.45rem;
   }
 }
 
@@ -1776,6 +1942,6 @@ body[data-language="en"] .stat-card {
   .principle-card,
   .stat-card,
   .ticker-track {
-    animation-duration: 28s;
+    animation: none !important;
   }
 }
