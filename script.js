@@ -210,7 +210,6 @@ function setLanguage(language) {
     const navList = document.querySelector("#nav-list");
     const heroActions = document.querySelector("#hero-actions");
     const socialLinks = document.querySelector("#social-links");
-    const heroMeta = document.querySelector("#hero-meta");
     const statsGrid = document.querySelector("#stats-grid");
     const principlesGrid = document.querySelector("#principles-grid");
     const experienceGrid = document.querySelector("#experience-grid");
@@ -225,7 +224,6 @@ function setLanguage(language) {
     if (navList) navList.innerHTML = renderNav(getOrderedNavigation(locale.navigation, language));
     if (heroActions) heroActions.innerHTML = renderButtons(locale.hero.actions);
     if (socialLinks) socialLinks.innerHTML = renderSocialLinks(locale.profile.socials);
-    if (heroMeta) heroMeta.innerHTML = renderStats(locale.stats);
     if (statsGrid) statsGrid.innerHTML = renderStats(locale.stats);
     if (principlesGrid) principlesGrid.innerHTML = renderPrinciples(locale.principles);
     if (experienceGrid) experienceGrid.innerHTML = renderExperience(locale.experience);
