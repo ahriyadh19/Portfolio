@@ -112,6 +112,10 @@ function getOrderedNavigation(items, language) {
     return language === "ar" ? [...items].reverse() : items;
 }
 
+function getLanguageToggleIcon(language) {
+    return language === "ar" ? "circle-flags:us" : "circle-flags:sa";
+}
+
 function getTickerEntries(items, groups) {
     const iconByLabel = new Map(
         groups.flatMap((group) =>
@@ -255,7 +259,7 @@ function setLanguage(language) {
 
     const languageButton = document.querySelector("#language-toggle");
     if (languageButton) {
-        languageButton.textContent = language === "ar" ? "🇺🇸" : "🇸🇦";
+        languageButton.innerHTML = `<iconify-icon icon="${getLanguageToggleIcon(language)}" class="language-toggle-icon" aria-hidden="true"></iconify-icon>`;
         languageButton.setAttribute("aria-label", locale.ui.languageToggleLabel);
         languageButton.setAttribute("aria-pressed", String(language === "ar"));
     }

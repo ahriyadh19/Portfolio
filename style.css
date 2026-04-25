@@ -423,6 +423,12 @@ body[data-nav-open="true"] .nav-toggle-icon::after {
   line-height: 1;
 }
 
+.language-toggle-icon {
+  display: inline-flex;
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
 iconify-icon.ui-icon {
   width: 1em;
   height: 1em;
