@@ -36,6 +36,7 @@ const themeStorageKey = "portfolio-theme";
 const languageStorageKey = "portfolio-language";
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const mobileNavBreakpoint = window.matchMedia("(max-width: 780px)");
+const supportsFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 let revealObserver;
 let scrollSpyObserver;
 let kineticSceneInitialized = false;
@@ -49,7 +50,7 @@ const orbitalScene = [
 function canUseHeroTilt() {
     return !prefersReducedMotion
         && window.innerWidth > 1024
-        && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+        && supportsFinePointer;
 }
 
 function setText(selector, value) {
@@ -394,7 +395,7 @@ function initializeKineticScene() {
             card.style.setProperty("--float-delay", String((index % 6) * 1.35));
         });
 
-    if (prefersReducedMotion) {
+    if (prefersReducedMotion || !supportsFinePointer) {
         return;
     }
 
@@ -424,6 +425,10 @@ function initializeKineticScene() {
 }
 
 function initializeSpotlight() {
+    if (prefersReducedMotion || !supportsFinePointer) {
+        return;
+    }
+
     document
         .querySelectorAll(".hero-panel, .spotlight-card, .content-card, .project-card, .experience-card, .education-card, .stack-card, .stat-card, .principle-card, .contact-panel")
         .forEach((card) => {
@@ -491,6 +496,11 @@ function initializeScrollSpy() {
 
 function initializeServiceWorker() {
     if (!("serviceWorker" in navigator)) {
+        return;
+    }
+
+    const isSecureLocalhost = ["localhost", "127.0.0.1"].includes(window.location.hostname);
+    if (window.location.protocol !== "https:" && !isSecureLocalhost) {
         return;
     }
 
