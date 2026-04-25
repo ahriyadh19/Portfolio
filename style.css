@@ -1405,6 +1405,14 @@ body[data-language="en"] .stat-card {
     grid-template-columns: 1fr;
   }
 
+  .contact-panel {
+    gap: 1.15rem;
+  }
+
+  .contact-panel > div:first-child {
+    text-align: center;
+  }
+
   #main-content {
     gap: 3.2rem;
   }
@@ -1617,11 +1625,22 @@ body[data-language="en"] .stat-card {
     opacity: 0.22;
     filter: blur(28px);
   }
+}
 
-  [data-reveal] {
-    opacity: 1;
-    filter: none;
-    transform: none;
+@media (max-width: 700px) {
+  .projects-grid,
+  .stack-grid,
+  .principles-grid,
+  .contact-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-panel > div:first-child {
+    text-align: start;
+  }
+
+  html[dir="rtl"] .contact-panel > div:first-child {
+    text-align: right;
   }
 }
 
@@ -1686,13 +1705,6 @@ body[data-language="en"] .stat-card {
   .hero-meta,
   .stats-grid,
   .social-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .projects-grid,
-  .stack-grid,
-  .principles-grid,
-  .contact-actions {
     grid-template-columns: 1fr;
   }
 
@@ -1931,6 +1943,12 @@ body[data-language="en"] .stat-card {
 }
 
 @media (hover: none), (pointer: coarse) {
+  [data-reveal] {
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+
   .hero-panel {
     transform: none !important;
   }
