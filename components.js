@@ -112,7 +112,7 @@ export function renderExperience(items) {
   return items
     .map(
       (item) => `
-        <article class="experience-card" data-reveal>
+        <article class="project-card experience-card" data-reveal>
           <div class="card-kicker">
             ${renderCardIcon(item.icon)}
             <div class="card-kicker-copy">
@@ -142,7 +142,7 @@ export function renderEducation(items) {
   return items
     .map(
       (item) => `
-        <article class="education-card" data-reveal>
+        <article class="project-card education-card" data-reveal>
           <div class="card-kicker">
             ${renderCardIcon(item.icon)}
             <div class="card-kicker-copy">
