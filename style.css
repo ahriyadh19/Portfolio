@@ -423,6 +423,11 @@ body[data-nav-open="true"] .nav-toggle-icon::after {
   line-height: 1;
 }
 
+iconify-icon.ui-icon {
+  width: 1em;
+  height: 1em;
+}
+
 .theme-toggle-icon {
   font-size: 1rem;
 }

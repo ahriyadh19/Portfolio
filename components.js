@@ -30,12 +30,22 @@ function renderTag(tag, alt = false) {
   return `<span class="tag${alt ? " alt" : ""}">${escapeHtml(tag)}</span>`;
 }
 
+function renderIconGlyph(icon) {
+  const normalizedIcon = String(icon || "").trim();
+
+  if (normalizedIcon.includes(":")) {
+    return `<iconify-icon icon="${escapeHtml(normalizedIcon)}" class="ui-icon"></iconify-icon>`;
+  }
+
+  return `<i class="${escapeHtml(normalizedIcon || "fa-solid fa-circle")} ui-icon"></i>`;
+}
+
 function renderIcon(iconClass, label) {
-  return `<span class="icon-shell" aria-hidden="true"><i class="${escapeHtml(iconClass || "fa-solid fa-circle")} ui-icon"></i></span><span>${escapeHtml(label)}</span>`;
+  return `<span class="icon-shell" aria-hidden="true">${renderIconGlyph(iconClass)}</span><span>${escapeHtml(label)}</span>`;
 }
 
 function renderCardIcon(iconClass) {
-  return `<span class="card-icon" aria-hidden="true"><i class="${escapeHtml(iconClass || "fa-solid fa-circle")} ui-icon"></i></span>`;
+  return `<span class="card-icon" aria-hidden="true">${renderIconGlyph(iconClass)}</span>`;
 }
 
 function renderStackItem(entry) {
@@ -43,7 +53,7 @@ function renderStackItem(entry) {
     return `<li>${escapeHtml(entry)}</li>`;
   }
 
-  return `<li class="stack-item with-icon"><span class="icon-shell" aria-hidden="true"><i class="${escapeHtml(entry.icon || "fa-solid fa-circle")} ui-icon"></i></span><span>${escapeHtml(entry.label)}</span></li>`;
+  return `<li class="stack-item with-icon"><span class="icon-shell" aria-hidden="true">${renderIconGlyph(entry.icon)}</span><span>${escapeHtml(entry.label)}</span></li>`;
 }
 
 export function renderNav(items) {
